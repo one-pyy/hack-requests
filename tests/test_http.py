@@ -18,12 +18,12 @@ class TestCase(unittest.TestCase):
 
     def test_post(self):
         data = "a=1&b=2&c=heloo"
-        r = self.hack.http("http://httpbin.org/post", post=data)
+        r = self.hack.http("http://httpbin.org/post", data=data)
         self.assertTrue(json.loads(r.text())["form"] == {"a": "1", "b": "2", "c": "heloo"})
 
     def test_json(self):
         data = '{"hack-requests":"v1.0","author":"w8ay"}'
-        r = self.hack.http("http://httpbin.org/post", post=data)
+        r = self.hack.http("http://httpbin.org/post", data=data)
         self.assertTrue("hack-requests" in r.text())
 
     def test_localhost(self):
